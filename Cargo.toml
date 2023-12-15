@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "crates/*"
+]
+
+default-members = [
+    "crates/fans",
+]

@@ -1,0 +1,10 @@
+[package]
+name = "rgb"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+futures = "0.3.21"
+tokio = { version = "1.17.0", features = ["rt", "macros"] }
+openrgb = "0.1.1"
+ctrlc = "3.2.1"

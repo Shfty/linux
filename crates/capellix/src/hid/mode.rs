@@ -1,0 +1,10 @@
+pub const GET_SPEEDS: &[u8] = &[0x17];
+pub const SET_SPEEDS: &[u8] = &[0x18];
+pub const CONNECTED_FANS: &[u8] = &[0x1a];
+pub const FAN_TYPES: &[u8] = &[0x1e];
+pub const LED_COUNT: &[u8] = &[0x20];
+pub const GET_TEMP: &[u8] = &[0x21];
+pub const DIRECT: &[u8] = &[0x22];
+pub const HW_SPEED_MODE: &[u8] = &[0x60];
+pub const HW_SPEED_FIXED_PERCENT: &[u8] = &[0x61];
+pub const HW_LIGHTING_MODE: &[u8] = &[0x64, 0x6d];
