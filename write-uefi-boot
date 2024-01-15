@@ -12,15 +12,15 @@ efibootmgr -b 4 -B > /dev/null
 
 echo ""
 echo "Rebuilding boot entries..."
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux-zen)" --loader VMLINUZ-LINUX-ZEN --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw quiet loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux-zen.img' > /dev/null
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux-zen fallback)" --loader VMLINUZ-LINUX-ZEN --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux-zen-fallback.img' > /dev/null
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux)" --loader VMLINUZ-LINUX --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw quiet loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux.img' > /dev/null
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux fallback)" --loader VMLINUZ-LINUX --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux-fallback.img' > /dev/null
+efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux-zen)" --loader 'VMLINUZ-LINUX-ZEN' --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw quiet loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux-zen.img' > /dev/null
+efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux-zen fallback)" --loader '\VMLINUZ-LINUX-ZEN' --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux-zen-fallback.img' > /dev/null
+efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux)" --loader 'VMLINUZ-LINUX' --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw quiet loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux.img' > /dev/null
+efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "NVME / Artix Linux (linux fallback)" --loader '\VMLINUZ-LINUX' --unicode 'root=UUID=7fe7709b-228d-4808-b2f3-538a5a9bdf70 rw loglevel=2 initrd=/amd-ucode.img  amdgpu.ppfeaturemask=0xffffffff   video=DP-1:e video=DP-2:e video=DP-3:e video=HDMI-A-1:e  drm.edid_firmware=DP-1:edid/gigabyte-m32u.bin drm.edid_firmware=DP-2:edid/xg270qg-144hz.bin initrd=/initramfs-linux-fallback.img' > /dev/null
 efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Windows Boot Manager" --loader '\EFI\MICROSOFT\BOOT\BOOTMGFW.EFI' > /dev/null
 
 echo ""
 echo "Setting boot order..."
-efibootmgr --bootorder 0,1,2,3,4 > /dev/null
+efibootmgr --bootorder 2,3,0,1,4 > /dev/null
 
 echo ""
 echo "Dumping final state:"
